@@ -56,6 +56,7 @@ module Rinda
     def initialize(log_dir)
       super()
       @log_dir = log_dir
+      Dir::mkdir(log_dir) rescue nil
       @ser = 0
       @hash = {}
       restore
