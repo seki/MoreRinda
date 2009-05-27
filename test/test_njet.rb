@@ -3,6 +3,7 @@ require 'rinda/njet'
 require 'test/unit'
 
 class NjetTest < Test::Unit::TestCase
+  include Rinda
   def test_match
     ts = Rinda::TupleSpace.new
     assert_equal([], ts.read_all([Njet.new(10)]))
