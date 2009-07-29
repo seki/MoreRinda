@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'rinda/tuplestore'
 require 'tokyocabinet'
 
@@ -121,31 +120,4 @@ module Rinda
       end
     end
   end
-end
-
-if __FILE__ == $0
-  require 'rinda/ptuplespace'
-
-  store = Rinda::TokyoStore.new('test.tc')
-  Rinda::setup_tuple_store(store)
-  ts = Rinda::PTupleSpace.new
-  ts.restore
-
-  DRb.install_id_conv(Rinda::TupleStoreIdConv.new)
-  ts = Rinda::PTupleSpace.new
-  DRb.start_service('druby://localhost:23456', ts)
-  ts.restore
-  
-  ts.write(['Hello', 'World'])
-  p ts.read_all(['Hello', nil])
-  p ts.take(['Hello', nil])
-
-  x = ts.write(['Hello', 'cancel'], 2)
-  p ts.read_all(['Hello', nil])
-  ref = DRbObject.new(x)
-  ref.cancel
-  p ts.read_all(['Hello', nil])
-  x = ts.write(['Hello', 'World'])
-  
-  p DRbObject.new(x)
 end
