@@ -20,7 +20,7 @@ module Rinda
       
       def self.call_or_die(*ary)
         file, lineno = __FILE__, __LINE__
-        if /^(.+?):(¥d+)(?::in `(.*)')?/ =~ caller(1)[0]
+        if /^(.+?):(\d+)(?::in `(.*)')?/ =~ caller(1)[0]
           file = $1
           lineno = $2.to_i
         end
