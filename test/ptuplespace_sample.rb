@@ -23,6 +23,3 @@ x = ts.write(['Hello', 'World'])
 
 p DRbObject.new(x)
 
-File.open('test.dat', 'wb') do |x|
-  Marshal.dump(store, x)
-end 
