@@ -41,7 +41,6 @@ module Rinda
       @name = name
       @bdb = BDB.new
       writer {}
-      @my_nil = Marshal.dump(nil)
     end
 
     def transaction(mode)
@@ -93,7 +92,7 @@ module Rinda
         key = ser.to_s(36)
         @bdb["t.#{key}"] = Marshal.dump(desc[:tuple])
         @bdb["r.#{key}"] = Marshal.dump(desc[:renewer])
-        @bdb["e.#{key}"] = Marshal.dump(desc[:epires])
+        @bdb["e.#{key}"] = Marshal.dump(desc[:expires])
         @bdb["c.#{key}"] = 't' if desc[:cancel]
         return key
       end
