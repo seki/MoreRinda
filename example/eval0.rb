@@ -11,5 +11,5 @@ DRb.start_service
 end
 
 10.times do |n|
-  p ts.read([:sqrt, n, nil])
+  p place.read([:sqrt, n, nil])
 end
