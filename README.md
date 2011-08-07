@@ -1,5 +1,7 @@
 # MoreRinda
 
+## Summary
+
 Extension to rinda tuplespace
 
 - rinda_eval = simple parallel programming utility. runs a computation inside child process and returns the result via tuple.
@@ -8,4 +10,11 @@ Extension to rinda tuplespace
 
 - njet = rinda's pattern matcher to match any changes.
 
-Please see "test" and "sample" directories for the usage
+## Install
+
+gem install more_rinda
+
+
+## Example Usage.
+
+Please see "test" and "sample" directories for the usage.
