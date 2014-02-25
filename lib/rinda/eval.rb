@@ -4,7 +4,6 @@ require 'rinda/rinda'
 module Rinda
   module_function
   def rinda_eval(ts)
-    Thread.pass # FIXME
     ts = DRbObject.new(ts) unless DRbObject === ts
     pid = fork do
       Thread.current['DRb'] = nil
