@@ -71,7 +71,7 @@ module Rinda
       old = @expires
       super(it)
       return unless @store
-      @store.set_expires(@serail, @expires) unless old == @expires
+      @store.set_expires(@serial, @expires) unless old == @expires
     end
   end
 
@@ -106,7 +106,11 @@ module Rinda
     def restore
       Rinda.tuple_store.each do |k, v|
         tuple = PTupleEntry.new_with_desc(k, v)
-        push(tuple)
+        if tuple.expired?
+          tuple.delete
+        else
+          push(tuple)
+        end
         nil
       end
     end
